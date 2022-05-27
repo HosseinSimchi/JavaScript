@@ -1,17 +1,51 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIFO Function</title>
-    <script src="/script.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width,
+				initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+	<title>Rock Paper Scissor</title>
 </head>
 <body>
-    <p>Hello my name is Hossein Simchi</p>
-    <p id="demo">Counter Down</p>
-    <button id = "stop" onclick="stopping()">Stop</button>
-    <button id = "start" onclick="starting()">Start</button>
-    <button id = "reset" onclick="resetting()">reset</button>
+	<section class="game">
+		<div class="title">Rock Paper Scissor</div>
+		
+		<div class="score">
+			<div class="playerScore">
+				<h2>Player</h2>
+				<p id="p-count">0</p>
+
+			</div>	
+			<div class="computerScore">
+				<h2>Computer</h2>
+				<p id="c-count">0</p>
+
+			</div>
+		</div>
+	
+		<div class="move">Choose your move</div>
+		
+		<div class="movesleft">Moves Left: 10 </div>
+		<div class="yourchoice">your choice </div>
+
+		<!--Options available to player to play game -->
+		<div class="options">
+			<button class="rock" onclick="Rock()">Rock</button>
+			<button class="paper" onclick="Paper()">Paper</button>
+			<button class="scissor" onclick="Scissors()">Scissors</button>
+		</div>
+		
+		<!--Final result of game -->
+		<div class="result"></div>
+		
+		<!--Reload the game -->
+		<button class="reload"></button>
+
+	</section>
 </body>
 </html>

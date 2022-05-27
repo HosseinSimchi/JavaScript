@@ -1,38 +1,120 @@
-// Set the date we're counting down to
+// app.js
 
-let x;
-let countDownDate1 = new Date("Jan 5, 2024 15:37:25").getTime();
-let countDownDate2 = new Date("Jan 5, 2024 15:39:25").getTime();
-let distance = countDownDate2 - countDownDate1; 
+let moves = 10;
+let computerWinners = 0, playerWinners = 0;
+let playerC;
+let computerC;
 
-function stopping() {
-    clearInterval(window.x);
-    document.getElementById("start").disabled  = false;
-    document.getElementById("stop").disabled  = true;
+function Rock() { 
+  moves--;
+  if ( moves >= 0){
+    document.querySelector(".yourchoice").innerHTML = 'yourchoice: ' +'Rock';
+    document.querySelector(".movesleft").innerHTML = `Moves Left: ${moves}`;
+    let computerchoice = Math.random();
+    if ( computerchoice < 0.33){
+      computerC = "Scissors";
+    }else if ( 0.33 <= computerchoice <=0.66 ){
+      computerC = "Rock";
+    }
+    else{
+      computerC = "Paper";
+    }
+    switch ( computerC ){
+      case "Scissors":
+        playerWinners += 1;
+        document.querySelector("#p-count").innerHTML = `${playerWinners}`
+        if (playerWinners + computerWinners >= 10){
+          alert("You have Won!!!!!!!")
+        }
+        break;
+      case "Paper":
+        computerWinners += 1;
+        document.querySelector("#c-count").innerHTML = `${computerWinners}`
+        if (computerWinners + playerWinners >= 10){
+          alert("You have lost the game")
+        }
+        break;
+      }
+  }else{
+    if (playerWinners >= computerWinners){
+      alert("You have Won!!!!!!!")
+    }else if (playerWinners === computerWinners){alert("You both are equal!!!")}
+    else {alert("You have lost the game")}
+  }
 }
 
-function resetting() {
-  clearInterval(window.x);
-  document.getElementById("start").disabled  = false;
-  document.getElementById("stop").disabled  = true;
-  document.getElementById("stop").disabled  = true;
-  document.getElementById("demo").innerHTML = "00" + "m " + "00" + "s ";
-  distance = countDownDate2 - countDownDate1;
+function Paper() { 
+  moves--;
+  if ( moves >= 0){
+    document.querySelector(".yourchoice").innerHTML = 'yourchoice: ' +'Paper';
+    document.querySelector(".movesleft").innerHTML = `Moves Left: ${moves}`;
+    let computerchoice = Math.random();
+    if ( computerchoice < 0.33){
+      computerC = "Scissors";
+    }else if ( 0.33 <= computerchoice <=0.66 ){
+      computerC = "Rock";
+    }
+    else{
+      computerC = "Paper";
+    }
+    switch ( computerC ){
+      case "Scissors":
+        computerWinners += 1;
+        document.querySelector("#c-count").innerHTML = `${computerWinners}`
+        if (computerWinners + playerWinners >= 10){
+          alert("You have lost the game")
+        }
+        break;
+      case "Rock":
+        playerWinners += 1;
+        document.querySelector("#p-count").innerHTML = `${playerWinners}`
+        if (playerWinners + computerWinners >= 10){
+          alert("You have Won!!!!!!!")
+        }
+        break;
+      }
+  }else{
+    if (playerWinners >= computerWinners){
+      alert("You have Won!!!!!!!")
+    }else if (playerWinners === computerWinners){alert("You both are equal!!!")}
+    else {alert("You have lost the game")}
+  }
 }
 
-
-function starting() {
-    document.getElementById("start").disabled  = true;
-    document.getElementById("stop").disabled  = true;
-    document.getElementById("stop").disabled  = false;
-        window.x = setInterval (function settinginterval() {
-          distance -= 1000
-          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-          document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
-          if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
-          }
-        },1000)
+function Scissors() { 
+  moves--;
+  if ( moves >= 0){
+    document.querySelector(".yourchoice").innerHTML = 'yourchoice: ' +'Scissors';
+    document.querySelector(".movesleft").innerHTML = `Moves Left: ${moves}`;
+    let computerchoice = Math.random();
+    if ( computerchoice < 0.33){
+      computerC = "Scissors";
+    }else if ( 0.33 <= computerchoice <=0.66 ){
+      computerC = "Rock";
+    }
+    else{
+      computerC = "Paper";
+    }
+    switch ( computerC ){
+      case "Rock":
+        computerWinners += 1;
+        document.querySelector("#c-count").innerHTML = `${computerWinners}`
+        if (computerWinners + playerWinners >= 10){
+          alert("You have lost the game")
+        }
+        break;
+      case "Paper":
+        playerWinners += 1;
+        document.querySelector("#p-count").innerHTML = `${playerWinners}`
+        if (playerWinners + computerWinners >= 10){
+          alert("You have Won!!!!!!!")
+        }
+        break;
+      }
+  }else{
+    if (playerWinners >= computerWinners){
+      alert("You have Won!!!!!!!")
+    }else if (playerWinners === computerWinners){alert("You both are equal!!!")}
+    else {alert("You have lost the game")}
+  }
 }
